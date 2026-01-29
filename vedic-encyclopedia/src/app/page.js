@@ -10,7 +10,7 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      <main className="pt-28 w-full min-h-screen bg-gradient-to-br from-[#fff7ed] via-[#fffaf2] to-[#ffedd5]">
+      <main className="pt-28 w-full min-h-screen bg-transparent ">
         {/* Add horizontal spacing using px-6 sm:px-12 md:px-16 lg:px-24 */}
         <div className="px-6 sm:px-12 md:px-16 lg:px-24">
           <HeroSection />
