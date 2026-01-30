@@ -164,12 +164,15 @@ export default function AdminDashboard() {
   /* ================= UI ================= */
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-slate-50 flex">
+
 
       {/* SIDEBAR */}
-      <aside className="w-64 bg-white border-r p-6 flex flex-col justify-between">
+      <aside className="w-64 bg-white border-r border-gray-200 p-6 flex flex-col justify-between">
+
         <div>
-          <h2 className="text-xl font-semibold">Admin Panel</h2>
+          <h2 className="text-xl font-bold text-indigo-700">Admin Panel</h2>
+
           <p className="text-sm text-gray-500 mb-6">Vedic Encyclopedia</p>
 
           <div className="space-y-2">
@@ -204,7 +207,8 @@ export default function AdminDashboard() {
       <main className="flex-1 p-8">
         <div className="max-w-7xl mx-auto">
 
-          <h1 className="text-3xl font-semibold mb-2">Dashboard</h1>
+          <h1 className="text-3xl font-bold mb-2 text-indigo-800">Dashboard</h1>
+
           <p className="text-gray-600 mb-8">
             Manage your encyclopedia categories and articles
           </p>
@@ -248,7 +252,9 @@ export default function AdminDashboard() {
 
                 <button
                   onClick={openAddCategory}
-                  className="bg-gray-900 text-white px-4 py-2 rounded-md flex items-center gap-2"
+                  className="bg-amber-600 hover:bg-amber-700 text-white
+
+ text-white px-4 py-2 rounded-md flex items-center gap-2"
                 >
                   <Plus size={16} /> Add Category
                 </button>
@@ -297,7 +303,8 @@ export default function AdminDashboard() {
 
                     <button
                       onClick={saveCategory}
-                      className="bg-black text-white py-2 rounded"
+                      className="bg-amber-600 hover:bg-amber-700 text-white py-2 rounded"
+
                     >
                       Save
                     </button>
@@ -307,18 +314,25 @@ export default function AdminDashboard() {
 
               <div className="grid md:grid-cols-3 gap-6">
                 {categories.map((cat) => (
-                  <div key={cat.id} className="bg-white rounded-lg shadow overflow-hidden">
+  <div
+    key={cat.id}
+    className="rounded-xl p-[2px] bg-yellow-400"
+  >
+    <div className="bg-white rounded-lg shadow overflow-hidden">
+
                     {cat.image && (
                       <img src={cat.image} className="h-40 w-full object-cover" />
                     )}
                     <div className="p-5">
-                      <h3 className="font-semibold">{cat.name}</h3>
+                      <h3 className="font-medium text-indigo-800">{cat.name}</h3>
+
                       <p className="text-sm text-gray-600">{cat.description}</p>
 
                       <div className="flex gap-3 mt-4">
                         <button
                           onClick={() => openEditCategory(cat)}
-                          className="border p-2 rounded"
+                          className="border p-2 rounded ring-1 ring-[#D4AF37]"
+
                         >
                           <Edit size={16} />
                         </button>
@@ -327,12 +341,14 @@ export default function AdminDashboard() {
   setConfirm({ open: true, type: 'category', id: cat.id })
 }
 
-                          className="border p-2 rounded text-red-600"
+                          className="border p-2 rounded text-red-600 ring-1 ring-[#D4AF37]"
+
                         >
                           <Trash2 size={16} />
                         </button>
                       </div>
                     </div>
+                  </div>
                   </div>
                 ))}
               </div>
@@ -348,14 +364,32 @@ export default function AdminDashboard() {
 
                 <button
                   onClick={openAddArticle}
-                  className="bg-gray-900 text-white px-4 py-2 rounded-md flex items-center gap-2"
+                  className="bg-amber-600 hover:bg-amber-700 text-white
+
+ text-white px-4 py-2 rounded-md flex items-center gap-2"
                 >
                   <Plus size={16} /> Add Article
                 </button>
               </div>
 
               {showArticleForm && (
-                <div className="bg-white p-5 rounded-lg shadow mb-6 grid gap-3">
+  <div className="bg-white p-5 rounded-lg shadow mb-6">
+
+    {/* HEADER */}
+    <div className="flex justify-between mb-3">
+      <h3 className="font-semibold">
+        {editingArticleId ? 'Edit Article' : 'Add Article'}
+      </h3>
+
+      <X
+        className="cursor-pointer"
+        onClick={() => setShowArticleForm(false)}
+      />
+    </div>
+
+    {/* FORM */}
+    <div className="grid gap-3">
+
                   <input
                     className="border p-2 rounded"
                     placeholder="Title"
@@ -409,11 +443,13 @@ export default function AdminDashboard() {
 
                   <button
                     onClick={saveArticle}
-                    className="bg-black text-white py-2 rounded"
+                    className="bg-amber-600 hover:bg-amber-700 text-white py-2 rounded"
+
                   >
                     Save
                   </button>
                 </div>
+              </div>
               )}
 
               <div className="space-y-4">
@@ -424,13 +460,18 @@ export default function AdminDashboard() {
 
                   return (
                     <div
-                      key={art.id}
-                      className="bg-white p-6 rounded-lg shadow flex justify-between"
-                    >
+  key={art.id}
+  className="rounded-xl p-[2px] bg-yellow-400"
+>
+  <div className="bg-white p-6 rounded-lg shadow flex justify-between">
+
                       <div>
-                        <h3 className="font-semibold">{art.title}</h3>
+                       <h3 className="font-medium text-indigo-800">{art.title}</h3>
                         <div className="flex items-center gap-3 text-sm text-gray-600">
-  <span>Category: {cat?.name || 'Deleted'}</span>
+  <span className="text-red-700">
+  Category: {cat?.name || 'Deleted'}
+</span>
+
 
   <span
     className={`px-2 py-0.5 rounded text-xs font-medium ${
@@ -491,6 +532,7 @@ export default function AdminDashboard() {
                         </button>
                       </div>
                     </div>
+                    </div>
                   );
                 })}
               </div>
@@ -542,20 +584,36 @@ export default function AdminDashboard() {
 /* ================= COMPONENTS ================= */
 
 function StatCard({ title, value }) {
+  const colorMap = {
+    'Published': 'text-green-600',
+    'Drafts': 'text-yellow-400',
+    'Total Articles': 'text-blue-600',
+    'Total Categories': 'text-purple-600',
+  };
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow">
+    <div
+  className="bg-white p-6 rounded-lg shadow border"
+  style={{ borderColor: '#A5B4FC' }}
+>
+
       <p className="text-sm text-gray-500">{title}</p>
-      <p className="text-3xl font-semibold mt-1">{value}</p>
+      <p className={`text-3xl font-bold mt-1 ${colorMap[title] || ''}`}>
+        {value}
+      </p>
     </div>
   );
 }
+
 
 function TabButton({ active, text, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`pb-2 ${
-        active ? 'border-b-2 border-black font-medium' : 'text-gray-500'
+      className={`pb-2 transition ${
+        active
+          ? 'text-indigo-700 border-b-2 border-indigo-700'
+          : 'text-gray-500 hover:text-indigo-700'
       }`}
     >
       {text}
@@ -563,14 +621,20 @@ function TabButton({ active, text, onClick }) {
   );
 }
 
-function SidebarBtn({ text, onClick }) {
+
+function SidebarBtn({ text, onClick, active }) {
   return (
     <div
       onClick={onClick}
-      className="px-3 py-2 rounded hover:bg-gray-100 cursor-pointer"
+      className={`px-3 py-2 rounded-lg cursor-pointer transition
+        ${active
+          ? 'bg-indigo-100 text-indigo-700 font-medium'
+          : 'text-gray-600 hover:bg-indigo-50 hover:text-indigo-700'}
+      `}
     >
       {text}
     </div>
   );
 }
+
 
