@@ -3,6 +3,7 @@ import HeroSection from "../components/HeroSection";
 import CategorySection from "../components/CategorySection";
 import AboutSection from "../components/AboutSection";
 import Footer from "../components/Footer";
+import Suggestion from "@/components/suggestion";
 
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
           <HeroSection />
           <CategorySection />
           <AboutSection />
+          <Suggestion/>
           <Footer />
           
         </div>
