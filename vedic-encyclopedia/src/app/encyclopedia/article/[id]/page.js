@@ -87,7 +87,11 @@ export default async function ArticleContentPage({ params }) {
               leading-relaxed
             "
           >
-            {article.content}
+            {article.content.split('\n\n').map((para, i) => (
+  <p key={i} className="mb-6 leading-relaxed">
+    {para}
+  </p>
+))}
           </div>
         </article>
 
