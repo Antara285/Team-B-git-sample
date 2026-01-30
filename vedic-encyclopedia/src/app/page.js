@@ -17,7 +17,7 @@ export default function HomePage() {
           <HeroSection />
           <CategorySection />
           <AboutSection />
-          <h3 className="mb-[-40] mt-[50px] font-bold text-orange-900">Have Suggestions? <Link href={"/suggest"}>Click Here!</Link> </h3>
+          <h3 className="mb-[-60] mt-[70px] font-bold text-orange-900">Have Suggestions? <Link href={"/suggest"}>Click Here!</Link> </h3>
           <Footer />
          
         </div>
