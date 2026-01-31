@@ -146,6 +146,29 @@ export default function AdminDashboard() {
 };
 
 
+const generateArticleWithAI = async () => {
+  if (!articleForm.title) {
+    alert("Please enter title first");
+    return;
+  }
+
+  const res = await fetch("/api/ai/generate-article", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: articleForm.title,
+      category: articleForm.category_id,
+    }),
+  });
+
+  const data = await res.json();
+
+  setArticleForm(prev => ({
+    ...prev,
+    content: data.content,
+  }));
+};
+
   const deleteArticleHandler = async (id) => {
   await deleteArticle(id);
 
@@ -441,13 +464,25 @@ export default function AdminDashboard() {
                     }
                   />
 
+                   <div className="flex justify-end gap-2 mt-3">
+
+                  <button
+                    type="button"
+                    onClick={generateArticleWithAI}
+                    className="px-3 py-2 text-sm text-white rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 hover:opacity-90 transition"
+                  >
+                    AI Draft
+                  </button>
+
                   <button
                     onClick={saveArticle}
-                    className="bg-amber-600 hover:bg-amber-700 text-white py-2 rounded"
-
+                    className="px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded"
                   >
                     Save
                   </button>
+
+                </div>
+       
                 </div>
               </div>
               )}
