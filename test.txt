@@ -1,8 +1,0 @@
-This text is for testing
-this is version 1
-
-this is my second commit
-version 2 
-
-this is the third commit
-version 3
